@@ -10,10 +10,19 @@ Describe "New-VsPhase" {
     }
     Context "only AppType specified" {
         It "Should return an object with the AppType defined, all other properties empty." {
-            (New-VsPhase "clioutput").AppType | Should Be "clioutput" 
-            (New-VsPhase "clioutput").NextPhase | Should BeNullOrEmpty
-            (New-VsPhase "clioutput").Fieldsets | Should BeNullOrEmpty
-            (New-VsPhase "clioutput").ErrorMessages | Should BeNullOrEmpty
+            $AppType = "clioutput"
+            $VsPhase = New-VsPhase $AppType
+            $VsPhase.AppType | Should Be $AppType
+            $VsPhase.NextPhase | Should BeNullOrEmpty
+            $VsPhase.Fieldsets | Should BeNullOrEmpty
+            $VsPhase.ErrorMessages | Should BeNullOrEmpty
         }
     }
+    <#  Get this to work
+    Context "invalid AppType" {
+        It "Should fail due to unsupported AppType" {
+            New-VsPhase "notavalidapptype" -ErrorAction Stop | Should Throw 
+        }
+    }
+    #>
 }
