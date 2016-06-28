@@ -23,9 +23,7 @@ on_success:
     - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
     - git config --global user.email "brian@addicks.us"
     - git config --global user.name "Brian Addicks"
-    - git add *.psm1
-    - git stash
     - git checkout master
-    - git stash pop
+    - git add *.psm1
     - git commit -am "appveyor: successfully built psm1 file"
     - git push
