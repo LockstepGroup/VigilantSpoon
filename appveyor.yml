@@ -14,6 +14,6 @@ test_script:
         if ($res.FailedCount -gt 0) {
             throw "$($res.FailedCount) tests failed."
         } else {
-            . .\buildmodule.psm1
+            #. .\buildmodule.psm1
             $SendToPoshServer = Invoke-WebRequest -Uri http://p.ltg.bz/PsAjax/github.ps1 -Method Post -Body $PostParams
         }
