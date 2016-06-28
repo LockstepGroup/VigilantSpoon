@@ -10,10 +10,5 @@ test_script:
     - ps: $PostParams = @{"repo" = $env:APPVEYOR_REPO_NAME }
     - ps: $res = Invoke-Pester -Path ".\powershell\cmdlets" -OutputFormat NUnitXml -OutputFile TestsResults.xml -PassThru
     - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\TestsResults.xml))
-    - ps: |
-        if ($res.FailedCount -gt 0) {
-            throw "$($res.FailedCount) tests failed."
-        } else {
-            #. .\buildmodule.psm1
-            $SendToPoshServer = Invoke-WebRequest -Uri http://p.ltg.bz/PsAjax/github.ps1 -Method Post -Body $PostParams
-        }
+    - ps: if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed." } else { $Passed = $true }
+    - ps: if ($Passed) { $SendToPoshServer = Invoke-WebRequest -Uri http://p.ltg.bz/PsAjax/github.ps1 -Method Post -Body $PostParams }
