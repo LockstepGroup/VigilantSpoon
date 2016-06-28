@@ -7,6 +7,7 @@ install:
 
 build: false
 
+
 test_script:
     - ps: $PostParams = @{"repo" = $env:APPVEYOR_REPO_NAME }
     - ps: $res = Invoke-Pester -Path ".\powershell\cmdlets" -OutputFormat NUnitXml -OutputFile TestsResults.xml -PassThru
