@@ -18,6 +18,7 @@ test_script:
     - ps: if ($Passed) { $SendToPoshServer = Invoke-WebRequest -Uri http://p.ltg.bz/PsAjax/github.ps1 -Method Post -Body $PostParams }
 
 on_success:
+    - ps: . .\buildmodule.ps1
     - git config --global credential.helper store
     - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
     - git config --global user.email "brian@addicks.us"
