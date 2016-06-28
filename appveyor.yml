@@ -3,8 +3,7 @@ environment:
     secure: joNbdN4I0z2a0UlrT9cVprlienu9gTi1nscqORcDeGlaaCDVa3ym+b0IYJ+pgUJb
 
 skip_commits:
-    message: /updated readme.*/
-    message: /appveyor:/
+    message: /(updated readme.*|appveyor:)/
 
 install:
     - cinst pester
