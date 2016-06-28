@@ -4,7 +4,6 @@ skip_commits:
 install:
   - cinst pester
 
-
 build: false
 
 test_script:
