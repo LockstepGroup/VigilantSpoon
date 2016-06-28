@@ -1,6 +1,6 @@
 environment:
-  my_variable:
-    secure: joNbdN4I0z2a0UlrT9cVprlienu9gTi1nscqORcDeGlaaCDVa3ym+b0IYJ+pgUJb
+  access_token:
+    secure: cyNYQsJNo5blyDhjfJzKpxBm6KnSFANjis0f0ft7BcdSP7dZ8Qw4S0EmZ9uyir14
 
 skip_commits:
     message: /(updated readme.*|appveyor:)/
