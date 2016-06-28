@@ -4,6 +4,7 @@ environment:
 
 skip_commits:
     message: /updated readme.*/
+    message: /appveyor:/
 
 install:
     - cinst pester
@@ -24,5 +25,8 @@ on_success:
     - git config --global user.email "brian@addicks.us"
     - git config --global user.name "Brian Addicks"
     - git add *.psm1
-    - git commit -am "successfully built psm1 file"
+    - git commit -am "appveyor: successfully built psm1 file"
+    - git stash
+    - git checkout master
+    - git stash pop
     - git push
