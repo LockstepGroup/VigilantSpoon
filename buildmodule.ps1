@@ -1,4 +1,8 @@
 $PowershellFiles = ls .\powershell\cmdlets\ -exclude '*.Tests.*'
-$ModuleOutput = $PowershellFiles -join "`r`n"
+$ModuleOutput = @()
 
-$ModuleOutput | Out-File .\VigilantSpoon.psm1
+foreach ($p in $PowershellFiles) {
+    $ModuleOutput += Get-Content $p
+}
+
+$ModuleOutput | Out-File .\VigilantSpoon.psm1 -Force
