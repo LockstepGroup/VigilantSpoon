@@ -5,5 +5,6 @@ foreach ($p in $PowershellFiles) {
     $ModuleOutput += Get-Content $p
 }
 
-rm .\VigilantSpoon.psm1
+Remove-Item *.psm1
+ls
 $ModuleOutput | Out-File .\VigilantSpoon.psm1 -Force
