@@ -17,6 +17,7 @@ test_script:
     - ps: if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed." } else { $Passed = $true }
     - ps: if ($Passed) { $SendToPoshServer = Invoke-WebRequest -Uri http://p.ltg.bz/PsAjax/github.ps1 -Method Post -Body $PostParams }
 
+
 on_success:
     - git config --global credential.helper store
     - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
