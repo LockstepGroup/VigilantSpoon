@@ -28,6 +28,6 @@ on_success:
     - ps: ls
     - git add *.psm1
     - git status
-    - git commit -am "appveyor: successfully built psm1 file"
+    - git commit --all --message  "appveyor: successfully built psm1 file"
     - git status
     - git push
