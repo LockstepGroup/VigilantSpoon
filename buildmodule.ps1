@@ -7,4 +7,5 @@ foreach ($p in $PowershellFiles) {
 
 Remove-Item *.psm1
 ls
+$ModuleOutput = "#Build: " + $env:APPVEYOR_BUILD_NUMBER + "`r`n" + $ModuleOutput
 $ModuleOutput | Out-File .\VigilantSpoon.psm1 -Force
