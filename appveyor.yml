@@ -27,7 +27,5 @@ on_success:
     - ps: . .\buildmodule.ps1
     - ps: ls
     - git add *.psm1
-    - git status
     - git commit -a -m "appveyor build successful"
-    - git status
     - git push
